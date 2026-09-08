@@ -1,0 +1,27 @@
+* { box-sizing: border-box; }
+
+html {
+  min-width: 320px;
+  background: var(--color-bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at 50% 12%, var(--color-primary-mist), transparent 30rem), var(--color-bg);
+}
+
+a { color: inherit; }
+button, input, select { font: inherit; }
+button, select { cursor: pointer; }
+
+::selection {
+  color: var(--color-surface);
+  background: var(--color-primary);
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-focus) 38%, transparent);
+  outline-offset: 3px;
+}

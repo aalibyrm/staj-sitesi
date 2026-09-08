@@ -1,0 +1,23 @@
+.decoration {
+  position: absolute;
+  top: -38px;
+  width: 370px;
+  aspect-ratio: 1;
+  pointer-events: none;
+  border: 1px solid var(--color-network-border);
+  border-radius: 50%;
+  opacity: 0.62;
+  background-image:
+    radial-gradient(circle at 20% 20%, var(--color-network-node-strong) 0 2px, transparent 2.5px),
+    radial-gradient(circle at 74% 30%, var(--color-network-node-soft) 0 2px, transparent 2.5px),
+    radial-gradient(circle at 52% 72%, var(--color-network-node-medium) 0 2.5px, transparent 3px),
+    radial-gradient(circle, var(--color-network-dot) 0 1px, transparent 1.4px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 10px 10px;
+  mask-image: radial-gradient(circle, var(--color-mask) 0 58%, transparent 76%);
+}
+
+.left { left: -166px; }
+.right { right: -125px; }
+
+@media (max-width: 1099px) { .decoration { opacity: 0.3; } }
+@media (max-width: 767px) { .decoration { display: none; } }

@@ -1,0 +1,31 @@
+.field {
+  display: flex;
+  height: 48px;
+  align-items: center;
+  gap: var(--space-3);
+  padding-inline: var(--space-4);
+  color: var(--color-navy-900);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-92);
+  box-shadow: var(--shadow-control);
+}
+
+.field:focus-within {
+  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
+  box-shadow: var(--shadow-control-focus);
+}
+
+.field input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  color: var(--color-text);
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 0.875rem;
+}
+
+.field input::placeholder { color: var(--color-text-tertiary); }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }

@@ -1,0 +1,19 @@
+.statement {
+  position: absolute;
+  top: 110px;
+  right: max(24px, calc((100vw - var(--container-width)) / 2));
+  color: var(--color-navy-700);
+  text-align: left;
+}
+
+.statement p {
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.18em;
+  line-height: 1.65;
+  text-transform: uppercase;
+}
+
+.line { display: block; width: 28px; height: 2px; margin-block: var(--space-3) var(--space-4); background: var(--color-primary); }
+.brand { font-size: 0.75rem; }
+@media (max-width: 1140px) { .statement { display: none; } }

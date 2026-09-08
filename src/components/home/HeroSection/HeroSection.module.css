@@ -1,0 +1,7 @@
+.hero { position: relative; overflow: hidden; padding: 24px 0 25px; }
+.inner { position: relative; z-index: 1; text-align: center; }
+.content { width: min(100%, 780px); margin: 25px auto 0; }
+.eyebrow { color: var(--color-navy-700); font-size: 0.75rem; font-weight: 750; letter-spacing: 0.3em; text-transform: uppercase; }
+.title { margin-top: 11px; color: var(--color-navy-950); font-size: clamp(2.75rem, 4.3vw, 3.75rem); font-weight: 800; letter-spacing: -0.055em; line-height: 0.98; }
+.description { width: min(100%, 690px); margin: 16px auto 0; color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.5; }
+@media (max-width: 767px) { .hero { padding-top: var(--space-5); } .content { margin-top: var(--space-6); } .eyebrow { letter-spacing: 0.22em; } .title { font-size: clamp(2.45rem, 12vw, 3.25rem); } .description { margin-top: var(--space-4); font-size: 0.9rem; } }

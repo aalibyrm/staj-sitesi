@@ -1,0 +1,6 @@
+.page { min-height: 100vh; display: grid; place-items: center; padding-block: var(--space-10); }
+.inner { text-align: center; }
+.code { margin-top: var(--space-16); color: var(--color-primary); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.25em; }
+.inner h1 { margin-top: var(--space-3); color: var(--color-navy-950); font-size: clamp(2.4rem, 6vw, 4rem); letter-spacing: -0.05em; }
+.inner > p:not(.code) { margin-top: var(--space-4); color: var(--color-text-secondary); }
+.back { display: inline-flex; align-items: center; gap: var(--space-2); margin-top: var(--space-8); color: var(--color-primary-deep); font-size: 0.875rem; font-weight: 700; text-decoration: none; }
