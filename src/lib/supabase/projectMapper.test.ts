@@ -42,7 +42,18 @@ describe('projectMapper', () => {
     );
 
     expect(result.coverImageUrl).toBe(
-      'https://example.supabase.co/storage/v1/object/public/project-media/sample-project/cover.png',
+      'https://example.supabase.co/storage/v1/object/public/project-media/sample-project/cover.png?v=20260909-8x3',
+    );
+  });
+
+  it('versions direct Storage covers so updated card images bypass stale caches', () => {
+    const result = mapProjectSummary({
+      ...baseSummary,
+      cover_image_url: 'https://example.supabase.co/storage/v1/object/public/project-media/sample-project/cover.png',
+    });
+
+    expect(result.coverImageUrl).toBe(
+      'https://example.supabase.co/storage/v1/object/public/project-media/sample-project/cover.png?v=20260909-8x3',
     );
   });
 

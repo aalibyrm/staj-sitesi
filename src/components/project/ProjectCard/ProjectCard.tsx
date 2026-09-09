@@ -14,7 +14,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <Link className={styles.link} href={'/projects/' + project.slug} aria-label={project.title + ' projesini görüntüle'}>
         {project.coverImageUrl ? (
           <div className={styles.cover}>
-            <Image src={project.coverImageUrl} alt={project.title + ' proje görseli'} fill sizes="(max-width: 760px) 100vw, (max-width: 1180px) 50vw, 33vw" unoptimized />
+            <Image src={project.coverImageUrl} alt={project.title + ' proje görseli'} fill sizes="(max-width: 760px) 100vw, (max-width: 1180px) 50vw, 33vw" style={{ objectFit: 'contain' }} unoptimized />
           </div>
         ) : null}
         <div className={styles.body}>

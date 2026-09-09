@@ -22,6 +22,8 @@ interface SectionRow { id: string; section_key: string; title: string; section_t
 interface StudentRelationRow { display_order: number | null; students: StudentRow | StudentRow[] | null }
 interface TechnologyRelationRow { display_order: number | null; technologies: TechnologyRow | TechnologyRow[] | null }
 
+const CARD_COVER_VERSION = '20260909-8x3';
+
 export interface ProjectSummaryRow {
   id: string;
   slug: string;
@@ -177,9 +179,14 @@ function resolveCardCover(
   projectMediaBaseUrl?: string,
 ): string | undefined {
   const storedCover = resolveCover(row.cover_image_url, media);
-  if (storedCover || !projectMediaBaseUrl) return storedCover;
+  const cover = storedCover ?? (projectMediaBaseUrl
+    ? `${projectMediaBaseUrl.replace(/\/$/, '')}/${encodeURIComponent(row.slug)}/cover.png`
+    : undefined);
 
-  return `${projectMediaBaseUrl.replace(/\/$/, '')}/${encodeURIComponent(row.slug)}/cover.png`;
+  if (!cover || !cover.includes('/storage/v1/object/public/project-media/')) return cover;
+
+  const separator = cover.includes('?') ? '&' : '?';
+  return `${cover}${separator}v=${CARD_COVER_VERSION}`;
 }
 
 export function mapProjectSummary(
