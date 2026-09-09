@@ -22,11 +22,13 @@ export function HeroSection({ searchTerm, selectedYear, years, onSearchChange, o
       <Container className={styles.inner}>
         <BrandLockup />
         <div className={styles.content}>
-          <p className={styles.eyebrow}>Staj Projeleri Arşivi</p>
+          <p className={styles.eyebrow}>Staj Projeleri</p>
           <h1 id="hero-title" className={styles.title}>Gerçek Araştırma,<br />Gerçek Deneyim.</h1>
           <p className={styles.description}>CyberSense Lab’de staj yapan öğrencilerin, siber güvenlik, sensör teknolojileri, Tıbbi Nesnelerin İnterneti (MIoT) ve yapay zeka gibi alanlarda geliştirdiği projelerin dijital arşivi.</p>
         </div>
-        <ProjectToolbar searchTerm={searchTerm} selectedYear={selectedYear} years={years} onSearchChange={onSearchChange} onYearChange={onYearChange} />
+        {years.length ? (
+          <ProjectToolbar searchTerm={searchTerm} selectedYear={selectedYear} years={years} onSearchChange={onSearchChange} onYearChange={onYearChange} />
+        ) : null}
       </Container>
     </section>
   );

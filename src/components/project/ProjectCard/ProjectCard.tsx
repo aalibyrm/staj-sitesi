@@ -1,22 +1,30 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import type { Project } from '../../../types/project';
+import type { ProjectSummary } from '../../../types/project';
 import { CategoryLabel } from '../../ui/CategoryLabel/CategoryLabel';
 import { StudentMeta } from '../StudentMeta/StudentMeta';
 import styles from './ProjectCard.module.css';
 
-interface ProjectCardProps { project: Project; }
+interface ProjectCardProps { project: ProjectSummary; }
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className={styles.card}>
       <Link className={styles.link} href={'/projects/' + project.slug} aria-label={project.title + ' projesini görüntüle'}>
-        <div className={styles.cover}><img src={project.image} alt={project.title + ' için geçici proje görseli'} /></div>
+        {project.coverImageUrl ? (
+          <div className={styles.cover}>
+            <Image src={project.coverImageUrl} alt={project.title + ' proje görseli'} fill sizes="(max-width: 760px) 100vw, (max-width: 1180px) 50vw, 33vw" unoptimized />
+          </div>
+        ) : null}
         <div className={styles.body}>
-          <CategoryLabel>{project.category}</CategoryLabel>
+          {project.category ? <CategoryLabel>{project.category}</CategoryLabel> : null}
           <h2 className={styles.title}>{project.title}</h2>
-          <p className={styles.description}>{project.description}</p>
-          <div className={styles.footer}><StudentMeta student={project.student} /><ArrowRight className={styles.arrow} size={21} strokeWidth={1.65} aria-hidden="true" /></div>
+          {project.summary ? <p className={styles.description}>{project.summary}</p> : null}
+          <div className={styles.footer}>
+            {project.student ? <StudentMeta student={project.student} /> : <span />}
+            <ArrowRight className={styles.arrow} size={21} strokeWidth={1.65} aria-hidden="true" />
+          </div>
         </div>
       </Link>
     </article>

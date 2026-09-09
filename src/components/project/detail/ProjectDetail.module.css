@@ -1,0 +1,115 @@
+.page {
+  min-height: 100vh;
+  overflow: hidden;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-6) 0 0;
+}
+.heroInner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: var(--space-6);
+  color: var(--color-text-tertiary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.breadcrumb a {
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  color: var(--color-primary-deep);
+}
+.hero h1 {
+  width: min(100%, 920px);
+  margin: var(--space-3) auto 0;
+  color: var(--color-navy-950);
+  font-size: clamp(2.35rem, 5vw, 4.25rem);
+  font-weight: 820;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+.subtitle {
+  width: min(100%, 850px);
+  margin: var(--space-3) auto 0;
+  color: var(--color-navy-700);
+  font-size: clamp(1rem, 1.65vw, 1.25rem);
+  line-height: 1.45;
+}
+.metadata {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  color: var(--color-text-secondary);
+  font-size: 0.82rem;
+}
+.metadata > span:first-child {
+  color: var(--color-navy-900);
+  font-weight: 750;
+}
+.metadata a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-primary-deep);
+  font-weight: 700;
+  text-decoration: none;
+}
+.metadata a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+.detailLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(270px, 0.72fr);
+  gap: clamp(32px, 5vw, 64px);
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-16);
+}
+.article {
+  min-width: 0;
+}
+@media (max-width: 1099px) {
+  .detailLayout {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .hero {
+    padding-top: var(--space-5);
+  }
+  .breadcrumb {
+    margin-top: var(--space-5);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 11vw, 3.15rem);
+  }
+  .metadata {
+    gap: var(--space-2);
+  }
+  .detailLayout {
+    padding-top: var(--space-8);
+  }
+}
