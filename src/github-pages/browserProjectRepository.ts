@@ -52,7 +52,13 @@ export async function getBrowserProjects(): Promise<ProjectSummary[]> {
     .order('published_at', { ascending: false });
 
   if (error) throw error;
-  return ((data ?? []) as unknown as ProjectSummaryRow[]).map(mapProjectSummary);
+  const projectMediaBaseUrl = import.meta.env.VITE_SUPABASE_URL
+    ? `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/project-media`
+    : undefined;
+
+  return ((data ?? []) as unknown as ProjectSummaryRow[]).map((row) =>
+    mapProjectSummary(row, projectMediaBaseUrl),
+  );
 }
 
 export async function getBrowserProjectBySlug(slug: string): Promise<ProjectDetail | null> {

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './BrandLockup.module.css';
 
 interface BrandLockupProps {
@@ -7,7 +8,11 @@ interface BrandLockupProps {
 
 export function BrandLockup({ variant = 'hero' }: BrandLockupProps) {
   return (
-    <div className={styles[variant]}>
+    <Link
+      className={styles[variant]}
+      href="/"
+      aria-label="CyberSense Lab ana sayfasına dön"
+    >
       <span className={styles.mark} aria-hidden="true">
         <Image
           src="/branding/cybersense-shield.png"
@@ -32,6 +37,6 @@ export function BrandLockup({ variant = 'hero' }: BrandLockupProps) {
           </span>
         ) : null}
       </span>
-    </div>
+    </Link>
   );
 }

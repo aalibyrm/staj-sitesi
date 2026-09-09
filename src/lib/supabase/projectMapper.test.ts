@@ -35,6 +35,17 @@ describe('projectMapper', () => {
     expect(result.summary).toBeUndefined();
   });
 
+  it('uses the conventional Storage cover only for project summaries without a cover', () => {
+    const result = mapProjectSummary(
+      { ...baseSummary, project_media: [] },
+      'https://example.supabase.co/storage/v1/object/public/project-media',
+    );
+
+    expect(result.coverImageUrl).toBe(
+      'https://example.supabase.co/storage/v1/object/public/project-media/sample-project/cover.png',
+    );
+  });
+
   it('prefers direct cover and repository fallback while dropping invalid sections', () => {
     const row: ProjectDetailRow = {
       ...baseSummary,

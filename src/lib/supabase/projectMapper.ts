@@ -171,7 +171,21 @@ function resolveCover(cover: string | null, media: ProjectMedia[]): string | und
   return cover ?? media.find((item) => item.type === 'hero')?.url;
 }
 
-export function mapProjectSummary(row: ProjectSummaryRow): ProjectSummary {
+function resolveCardCover(
+  row: ProjectSummaryRow,
+  media: ProjectMedia[],
+  projectMediaBaseUrl?: string,
+): string | undefined {
+  const storedCover = resolveCover(row.cover_image_url, media);
+  if (storedCover || !projectMediaBaseUrl) return storedCover;
+
+  return `${projectMediaBaseUrl.replace(/\/$/, '')}/${encodeURIComponent(row.slug)}/cover.png`;
+}
+
+export function mapProjectSummary(
+  row: ProjectSummaryRow,
+  projectMediaBaseUrl?: string,
+): ProjectSummary {
   const students = mapStudents(row.project_students);
   const media = mapMedia(row.project_media);
   return {
@@ -180,7 +194,7 @@ export function mapProjectSummary(row: ProjectSummaryRow): ProjectSummary {
     title: row.title,
     category: row.category ?? undefined,
     summary: row.summary ?? undefined,
-    coverImageUrl: resolveCover(row.cover_image_url, media),
+    coverImageUrl: resolveCardCover(row, media, projectMediaBaseUrl),
     student: students[0],
     year: row.year,
   };

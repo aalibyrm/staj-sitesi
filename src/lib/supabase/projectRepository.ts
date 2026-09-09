@@ -40,7 +40,13 @@ async function fetchProjects(): Promise<ProjectSummary[]> {
     .order('published_at', { ascending: false });
 
   if (error) throw new ProjectRepositoryError('listelenmesi', error);
-  return ((data ?? []) as unknown as ProjectSummaryRow[]).map(mapProjectSummary);
+  const projectMediaBaseUrl = process.env.SUPABASE_URL
+    ? `${process.env.SUPABASE_URL}/storage/v1/object/public/project-media`
+    : undefined;
+
+  return ((data ?? []) as unknown as ProjectSummaryRow[]).map((row) =>
+    mapProjectSummary(row, projectMediaBaseUrl),
+  );
 }
 
 async function fetchProjectBySlug(slug: string): Promise<ProjectDetail | null> {
