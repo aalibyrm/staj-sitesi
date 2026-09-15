@@ -1,14 +1,13 @@
 .section {
-  padding: 0 0 var(--space-10);
-  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-border) 32%, var(--color-surface));
 }
 .section + .section,
 .section + div .section,
 div + div .section {
-  padding-top: var(--space-10);
-}
-.section:last-child {
-  border-bottom: 0;
+  margin-top: var(--space-4);
 }
 .sectionHeader {
   display: flex;
@@ -239,13 +238,13 @@ div + div .section {
 }
 .conclusion {
   position: relative;
-  padding-left: var(--space-5);
+  padding-left: calc(var(--space-6) + var(--space-4));
 }
 .conclusion::before {
   position: absolute;
-  top: 0;
-  bottom: var(--space-10);
-  left: 0;
+  top: var(--space-6);
+  bottom: var(--space-6);
+  left: var(--space-6);
   width: 2px;
   background: var(--color-primary);
   content: '';
@@ -268,12 +267,20 @@ div + div .section {
 }
 @media (max-width: 560px) {
   .section {
-    padding-bottom: var(--space-8);
+    padding: var(--space-5);
   }
   .section + .section,
   .section + div .section,
   div + div .section {
-    padding-top: var(--space-8);
+    margin-top: var(--space-3);
+  }
+  .conclusion {
+    padding-left: calc(var(--space-5) + var(--space-4));
+  }
+  .conclusion::before {
+    top: var(--space-5);
+    bottom: var(--space-5);
+    left: var(--space-5);
   }
   .sectionHeader {
     align-items: flex-start;
