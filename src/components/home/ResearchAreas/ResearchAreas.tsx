@@ -1,6 +1,5 @@
 import {
   BrainCircuit,
-  ChevronRight,
   HeartPulse,
   MapPin,
   Network,
@@ -71,7 +70,6 @@ export function ResearchAreas() {
                   <h3 className={styles.cardTitle}>{area.title}</h3>
                   <p className={styles.cardDescription}>{area.description}</p>
                 </div>
-                <ChevronRight className={styles.cardArrow} size={20} strokeWidth={1.8} aria-hidden="true" />
               </article>
             );
           })}

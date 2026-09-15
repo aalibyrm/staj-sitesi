@@ -51,6 +51,10 @@ export function ArchiveHome({ projects }: ArchiveHomeProps) {
       />
       <ResearchAreas />
       <Container>
+        <h2 className={styles.projectsHeading}>
+          <span className={styles.headingLine} aria-hidden="true" />
+          Projeler
+        </h2>
         <ProjectGrid projects={filteredProjects} />
       </Container>
       <SiteFooter years={years} selectedYear={selectedYear || undefined} onYearChange={setSelectedYear} />
