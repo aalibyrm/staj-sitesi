@@ -2,7 +2,7 @@
   padding: var(--space-6);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--color-border) 32%, var(--color-surface));
+  background: color-mix(in srgb, var(--color-border) 18%, var(--color-surface));
 }
 .section + .section,
 .section + div .section,
