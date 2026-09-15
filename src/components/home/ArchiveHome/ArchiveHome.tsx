@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import type { ProjectSummary } from '../../../types/project';
 import { HeroSection } from '../HeroSection/HeroSection';
+import { ResearchAreas } from '../ResearchAreas/ResearchAreas';
 import { SiteFooter } from '../../layout/SiteFooter/SiteFooter';
 import { ProjectGrid } from '../../project/ProjectGrid/ProjectGrid';
 import { Container } from '../../ui/Container/Container';
@@ -48,6 +49,7 @@ export function ArchiveHome({ projects }: ArchiveHomeProps) {
         onSearchChange={setSearchTerm}
         onYearChange={setSelectedYear}
       />
+      <ResearchAreas />
       <Container>
         <ProjectGrid projects={filteredProjects} />
       </Container>

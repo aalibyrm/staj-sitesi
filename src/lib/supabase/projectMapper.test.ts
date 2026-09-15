@@ -42,18 +42,18 @@ describe('projectMapper', () => {
     );
 
     expect(result.coverImageUrl).toBe(
-      'https://example.supabase.co/storage/v1/object/public/project-media/sample-project/cover.png?v=20260909-8x3',
+      'https://example.supabase.co/storage/v1/render/image/public/project-media/sample-project/cover.png?width=800&height=300&resize=contain&quality=75&v=20260909-8x3',
     );
   });
 
-  it('versions direct Storage covers so updated card images bypass stale caches', () => {
+  it('optimizes and versions direct Storage covers while preserving existing parameters', () => {
     const result = mapProjectSummary({
       ...baseSummary,
-      cover_image_url: 'https://example.supabase.co/storage/v1/object/public/project-media/sample-project/cover.png',
+      cover_image_url: 'https://example.supabase.co/storage/v1/object/public/project-media/sample-project/cover.png?tenant=demo',
     });
 
     expect(result.coverImageUrl).toBe(
-      'https://example.supabase.co/storage/v1/object/public/project-media/sample-project/cover.png?v=20260909-8x3',
+      'https://example.supabase.co/storage/v1/render/image/public/project-media/sample-project/cover.png?tenant=demo&width=800&height=300&resize=contain&quality=75&v=20260909-8x3',
     );
   });
 

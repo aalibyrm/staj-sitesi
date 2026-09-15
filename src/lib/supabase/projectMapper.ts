@@ -23,6 +23,10 @@ interface StudentRelationRow { display_order: number | null; students: StudentRo
 interface TechnologyRelationRow { display_order: number | null; technologies: TechnologyRow | TechnologyRow[] | null }
 
 const CARD_COVER_VERSION = '20260909-8x3';
+const CARD_COVER_WIDTH = 800;
+const CARD_COVER_HEIGHT = 300;
+const STORAGE_OBJECT_PREFIX = '/storage/v1/object/public/project-media/';
+const STORAGE_RENDER_PREFIX = '/storage/v1/render/image/public/project-media/';
 
 export interface ProjectSummaryRow {
   id: string;
@@ -183,10 +187,15 @@ function resolveCardCover(
     ? `${projectMediaBaseUrl.replace(/\/$/, '')}/${encodeURIComponent(row.slug)}/cover.png`
     : undefined);
 
-  if (!cover || !cover.includes('/storage/v1/object/public/project-media/')) return cover;
+  if (!cover || !cover.includes(STORAGE_OBJECT_PREFIX)) return cover;
 
-  const separator = cover.includes('?') ? '&' : '?';
-  return `${cover}${separator}v=${CARD_COVER_VERSION}`;
+  const optimizedCover = new URL(cover.replace(STORAGE_OBJECT_PREFIX, STORAGE_RENDER_PREFIX));
+  optimizedCover.searchParams.set('width', String(CARD_COVER_WIDTH));
+  optimizedCover.searchParams.set('height', String(CARD_COVER_HEIGHT));
+  optimizedCover.searchParams.set('resize', 'contain');
+  optimizedCover.searchParams.set('quality', '75');
+  optimizedCover.searchParams.set('v', CARD_COVER_VERSION);
+  return optimizedCover.toString();
 }
 
 export function mapProjectSummary(
