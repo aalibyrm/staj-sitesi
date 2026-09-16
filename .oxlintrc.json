@@ -29,6 +29,7 @@
     "build/**",
     "dist/**",
     "coverage/**",
+    "site/**",
     "next-env.d.ts"
   ],
   "rules": {
